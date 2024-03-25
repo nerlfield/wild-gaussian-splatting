@@ -2,6 +2,10 @@
 
 This project merges [DUSt3R](https://github.com/nerlfield/dust3r)'s capabilities in camera parameter estimation and point cloud creation with the 3D scene representation efficiency of [Gaussian Splatting](https://github.com/nerlfield/gaussian-splatting). The goal is to simplify the process of 3D scene reconstruction and visualization from images without requiring pre-set camera information or specific viewpoint data.
 
+<video loop="loop" autoplay="autoplay" muted>
+  <source src="data/assets/results.mp4.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Cloning the Repository
 
