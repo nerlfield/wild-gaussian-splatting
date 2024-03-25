@@ -1,59 +1,44 @@
-# wild-gaussian-splatting
+# Wild Gaussian Splatting
 
-git clone git@github.com:nerlfield/wild-gaussian-splatting.git --recursive
+This project merges DUSt3R's capabilities in camera parameter estimation and point cloud creation with the 3D scene representation efficiency of Gaussian splatting. The goal is to simplify the process of 3D scene reconstruction and visualization from images without requiring pre-set camera information or specific viewpoint data.
 
-git pull --recurse-submodules
-git submodule update --init --recursive
 
-conda create -n wildgaussians python=3.11 cmake=3.14.0
+## Cloning the Repository
 
-conda activate wildgaussians 
-
-# General dependencies:
-conda install pytorch torchvision pytorch-cuda=12.1 -c pytorch -c nvidia  # use the correct version of cuda for your system
-or
-pip install torch==2.2.0+cu121 torchvision==0.17.0+cu121 torchaudio==2.2.0 -f https://download.pytorch.org/whl/torch_stable.html # it would be faster
-
-pip install ipywidgets==8.0.2 jupyterlab==3.4.2 lovely-tensors==0.1.15
-
-# Dust3r dependencies:
-cd dust3r
-
-pip install -r requirements.txt
-# Optional: you can also install additional packages to:
-# - add support for HEIC images
-pip install -r requirements_optional.txt
-
-# DUST3R relies on RoPE positional embeddings for which you can compile some cuda kernels for faster runtime.
-cd croco/models/curope/
-
-it could took a while:
-python setup.py build_ext --inplace
-cd ../../../
-
-mkdir -p checkpoints/
-wget https://download.europe.naverlabs.com/ComputerVision/DUSt3R/DUSt3R_ViTLarge_BaseDecoder_512_dpt.pth -P checkpoints/
-
-python3 demo.py --weights checkpoints/DUSt3R_ViTLarge_BaseDecoder_512_dpt.pth
-
-cd ..
-
-# Gaussian splatting dependencies:
-
+To begin, clone the repository and initialize its submodules:
 
 ```sh
-# setup pip packages
-pip install -r requirements.txt
-
-# setup submodules
-pip install -e gaussian-splatting/submodules/diff-gaussian-rasterization
-pip install -e gaussian-splatting/submodules/simple-knn
+git clone git@github.com:nerlfield/wild-gaussian-splatting.git --recursive
+cd wild-gaussian-splatting
+git pull --recurse-submodules
+git submodule update --init --recursive
 ```
 
-------
+## Create conda environment:
 
+```sh
+conda create -n wildgaussians python=3.11 cmake=3.14.0 -y
+conda activate wildgaussians
+```
 
+## Setting Up the Environment:
+
+With the environment activated, run the provided setup script and pass your CUDA version as an argument. This script installs necessary dependencies tailored to your CUDA version:
+
+```sh
+./setup_environment.sh <cuda_version>
+```
+
+Replace <cuda_version> with the version of CUDA you intend to use (e.g., 10.2, 11.1, 12.1). I used `12.1`.
+
+## Starting Jupyter Lab:
+
+This repository contains two notebooks that showcase fitting gaussians over scene from the wild:
+1. `./notebooks/00_dust3r_inference.ipynb` - Runs DUSt3R on a folder of images, saving camera parameters and point clouds in COLMAP format. Note: DUSt3R's memory usage increases quadratically with the number of images. On an L4 instance, it can process up to 32 images of 512x384 size.
+1. `./notebooks/01_gaussian_splatting_fitting.ipynb` - Reads DUSt3R results and applies Gaussian splatting. Modifications include the addition of rendering camera trajectory generation and bug fixes.
+
+To launch Jupyter Lab, use:
+
+```sh
 jupyter lab --no-browser --ip 0.0.0.0 --port 4546 --allow-root --notebook-dir=.
-
-
-python train.py -s ../data/scenes/turtle --white_background
+```
