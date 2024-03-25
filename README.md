@@ -1,6 +1,6 @@
 # Wild Gaussian Splatting
 
-This project merges DUSt3R's capabilities in camera parameter estimation and point cloud creation with the 3D scene representation efficiency of Gaussian splatting. The goal is to simplify the process of 3D scene reconstruction and visualization from images without requiring pre-set camera information or specific viewpoint data.
+This project merges [DUSt3R](https://github.com/nerlfield/dust3r)'s capabilities in camera parameter estimation and point cloud creation with the 3D scene representation efficiency of [Gaussian Splatting](https://github.com/nerlfield/gaussian-splatting). The goal is to simplify the process of 3D scene reconstruction and visualization from images without requiring pre-set camera information or specific viewpoint data.
 
 
 ## Cloning the Repository
