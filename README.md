@@ -7,6 +7,9 @@ This project merges [DUSt3R](https://github.com/nerlfield/dust3r)'s capabilities
   Your browser does not support the video tag.
 </video>
 
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHVxYjRsZXd3dHlrZnljNnVvaWx5cDdyNjJmMjc0YmhpdmppcGp1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jBxJfbzw9NqUeASrOo/giphy-downsized-large.gif"/>
+
+
 ## Cloning the Repository
 
 To begin, clone the repository and initialize its submodules:
