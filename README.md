@@ -15,7 +15,7 @@ This project merges [DUSt3R](https://github.com/nerlfield/dust3r)'s capabilities
 To begin, clone the repository and initialize its submodules:
 
 ```sh
-git clone git@github.com:nerlfield/wild-gaussian-splatting.git --recursive
+git clone --recursive https://github.com/nerlfield/wild-gaussian-splatting.git
 cd wild-gaussian-splatting
 git pull --recurse-submodules
 git submodule update --init --recursive
