@@ -49,3 +49,16 @@ To launch Jupyter Lab, use:
 ```sh
 jupyter lab --no-browser --ip 0.0.0.0 --port 4546 --allow-root --notebook-dir=.
 ```
+
+## Citing This Repository
+
+If you use Wild Gaussian Splatting in your research, please consider citing it as follows:
+
+```bibtex
+@misc{wild_gaussian_splatting_2024,
+  title={Wild Gaussian Splatting},
+  author={Daniel Kovalenko},
+  year={2024},
+  publisher={GitHub},
+  howpublished={\url{https://github.com/nerlfield/wild-gaussian-splatting}}
+}
