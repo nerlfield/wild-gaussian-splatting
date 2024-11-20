@@ -43,11 +43,19 @@ cd ../../../
 # Download pre-trained model
 mkdir -p checkpoints/
 wget https://download.europe.naverlabs.com/ComputerVision/DUSt3R/DUSt3R_ViTLarge_BaseDecoder_512_dpt.pth -P checkpoints/
+cd ../
+
+cd mast3r
+mkdir -p checkpoints/
+wget https://download.europe.naverlabs.com/ComputerVision/MAST3R/MAST3R_ViTLarge_BaseDecoder_512_dpt.pth -P checkpoints/
+pip install -r dust3r/requirements.txt
+pip install -r dust3r/requirements_optional.txt
+cd ../
 
 # Setup Gaussian splatting dependencies
-pip install -r ../requirements.txt
-pip install -e ../gaussian-splatting/submodules/diff-gaussian-rasterization
-pip install -e ../gaussian-splatting/submodules/simple-knn
+pip install -r requirements.txt
+pip install -e gaussian-splatting/submodules/diff-gaussian-rasterization
+pip install -e gaussian-splatting/submodules/simple-knn
 
 cd ..
 
