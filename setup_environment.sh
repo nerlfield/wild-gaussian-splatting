@@ -47,7 +47,7 @@ cd ../
 
 cd mast3r
 mkdir -p checkpoints/
-wget https://download.europe.naverlabs.com/ComputerVision/MAST3R/MAST3R_ViTLarge_BaseDecoder_512_dpt.pth -P checkpoints/
+wget https://download.europe.naverlabs.com/ComputerVision/MASt3R/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric.pth -P checkpoints/
 pip install -r dust3r/requirements.txt
 pip install -r dust3r/requirements_optional.txt
 cd ../
