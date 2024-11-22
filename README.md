@@ -1,6 +1,6 @@
 # Wild Gaussian Splatting
 
-This project merges [DUSt3R](https://github.com/nerlfield/dust3r)'s capabilities in camera parameter estimation and point cloud creation with the 3D scene representation efficiency of [Gaussian Splatting](https://github.com/nerlfield/gaussian-splatting). The goal is to simplify the process of 3D scene reconstruction and visualization from images without requiring pre-set camera information or specific viewpoint data.
+This project combines the capabilities of [DUSt3R](https://github.com/nerlfield/dust3r) and [MASt3R](https://github.com/naver/mast3r) for camera parameter estimation and initial point cloud creation with the 3D scene representation efficiency of [Gaussian Splatting](https://github.com/nerlfield/gaussian-splatting). The goal is to simplify the process of 3D scene reconstruction and visualization from images without requiring pre-set camera information or specific viewpoint data. You can perform camera estimation and initial point cloud creation using either [00_dust3r_inference.ipynb](./notebooks/00_dust3r_inference.ipynb) or [00_mast3r_inference.ipynb](./notebooks/00_mast3r_inference.ipynb). MASt3R requires fewer resources and can handle longer sequences. Follow this with Gaussian splatting using [01_gaussian_splatting_fitting.ipynb](./notebooks/01_gaussian_splatting_fitting.ipynb).
 
 <video loop="loop" autoplay="autoplay" muted>
   <source src="data/assets/results.mp4.mp4" type="video/mp4">
@@ -42,7 +42,8 @@ Replace <cuda_version> with the version of CUDA you intend to use (e.g., 10.2, 1
 
 This repository contains two notebooks that showcase fitting gaussians over scene from the wild:
 1. `./notebooks/00_dust3r_inference.ipynb` - Runs DUSt3R on a folder of images, saving camera parameters and point clouds in COLMAP format. Note: DUSt3R's memory usage increases quadratically with the number of images. On an L4 instance, it can process up to 32 images of 512x384 size.
-1. `./notebooks/01_gaussian_splatting_fitting.ipynb` - Reads DUSt3R results and applies Gaussian splatting. Modifications include the addition of rendering camera trajectory generation and bug fixes.
+2. `./notebooks/00_mast3r_inference.ipynb` - Runs MASt3R on a folder of images, saving camera parameters and point clouds in COLMAP format.
+3. `./notebooks/01_gaussian_splatting_fitting.ipynb` - Reads DUSt3R or MASt3R results and applies Gaussian splatting. Modifications include the addition of rendering camera trajectory generation and bug fixes.
 
 To launch Jupyter Lab, use:
 
@@ -57,7 +58,7 @@ If you use Wild Gaussian Splatting in your research, please consider citing it a
 ```bibtex
 @misc{wild_gaussian_splatting_2024,
   title={Wild Gaussian Splatting},
-  author={Daniel Kovalenko},
+  author={Daniel Kovalenko, Ostap Hembara},
   year={2024},
   publisher={GitHub},
   howpublished={\url{https://github.com/nerlfield/wild-gaussian-splatting}}
